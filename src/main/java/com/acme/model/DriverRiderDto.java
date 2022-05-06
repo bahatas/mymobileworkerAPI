@@ -1,19 +1,13 @@
 package com.acme.model;
 
 
-
 import lombok.Data;
 
-
-
-import java.util.List;
-
-
 @Data
-public class ClientDto {
+public class DriverRiderDto {
 
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private List<JobDto> job;
+    private JobDto job;
 }

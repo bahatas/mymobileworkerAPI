@@ -11,6 +11,6 @@ public interface JobService {
     JobDto getJobById(Long id);
     JobDto save(JobDto jobDto);
     void delete(Long id);
-    JobDto update(JobDto jobDto);
+    JobDto update(Long id,JobDto jobDto);
 
 }

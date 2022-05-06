@@ -31,6 +31,7 @@ public class JobController {
         List<JobDto> allJobsList = jobService.getAllJobsList();
 
 
+
         return ResponseEntity.of(allJobsList);
     }
 }
