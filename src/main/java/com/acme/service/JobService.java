@@ -1,16 +1,16 @@
 package com.acme.service;
 
-import com.acme.model.Job;
+import com.acme.model.JobDto;
 
 import java.util.List;
 
 public interface JobService {
 
 
-    List<Job> getAllJobsList();
-    Job getJobById(Long id);
-    Job save(Job job);
+    List<JobDto> getAllJobsList();
+    JobDto getJobById(Long id);
+    JobDto save(JobDto jobDto);
     void delete(Long id);
-    Job update(Job job);
+    JobDto update(JobDto jobDto);
 
 }

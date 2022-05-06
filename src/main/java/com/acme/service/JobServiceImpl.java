@@ -1,6 +1,6 @@
 package com.acme.service;
 
-import com.acme.model.Job;
+import com.acme.model.JobDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,17 +8,17 @@ import java.util.List;
 @Service
 public class JobServiceImpl implements JobService {
     @Override
-    public List<Job> getAllJobsList() {
+    public List<JobDto> getAllJobsList() {
         return null;
     }
 
     @Override
-    public Job getJobById(Long id) {
+    public JobDto getJobById(Long id) {
         return null;
     }
 
     @Override
-    public Job save(Job job) {
+    public JobDto save(JobDto jobDto) {
         return null;
     }
 
@@ -28,7 +28,7 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public Job update(Job job) {
+    public JobDto update(JobDto jobDto) {
         return null;
     }
 }

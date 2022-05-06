@@ -1,10 +1,9 @@
 package com.acme.controller;
 
 
-import com.acme.model.Job;
+import com.acme.model.JobDto;
 import com.acme.service.JobService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,16 +19,16 @@ public class JobController {
     private JobService jobService;
 
     @PostMapping("/create")
-    public ResponseEntity<Job> cerateJob(@RequestBody Job job){
+    public ResponseEntity<JobDto> cerateJob(@RequestBody JobDto jobDto){
 
 
-        return ResponseEntity.ok(job);
+        return ResponseEntity.ok(jobDto);
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<Job>> getJobsList(){
+    public ResponseEntity<List<JobDto>> getJobsList(){
 
-        List<Job> allJobsList = jobService.getAllJobsList();
+        List<JobDto> allJobsList = jobService.getAllJobsList();
 
 
         return ResponseEntity.of(allJobsList);

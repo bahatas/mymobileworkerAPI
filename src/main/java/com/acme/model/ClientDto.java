@@ -1,4 +1,4 @@
 package com.acme.model;
 
-public class Client {
+public class ClientDto {
 }
