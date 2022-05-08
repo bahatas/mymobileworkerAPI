@@ -28,7 +28,7 @@ public class DriverRider extends BaseEntity {
     private String lastName;
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "driverRider",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JsonManagedReference
-    private List<Job> jobs;
+//    @OneToMany(mappedBy = "driverRider",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+//
+//    private List<Job> jobs;
 }

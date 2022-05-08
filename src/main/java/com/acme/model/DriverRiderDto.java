@@ -19,5 +19,5 @@ public class DriverRiderDto {
     private String lastName;
     private String phoneNumber;
 //    @JsonManagedReference
-    private List<JobDto> jobs;
+//    private List<JobDto> jobs;
 }

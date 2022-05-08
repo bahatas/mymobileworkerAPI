@@ -27,12 +27,12 @@ public class Client extends BaseEntity {
     private String lastName;
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "client",
-            cascade = {CascadeType.ALL},
-            orphanRemoval = true,
-            fetch = FetchType.LAZY
-    )
-    @JsonManagedReference
-    private List<Job> jobs;
+//    @OneToMany(mappedBy = "client",
+//            cascade = {CascadeType.ALL},
+//            orphanRemoval = true,
+//            fetch = FetchType.LAZY
+//    )
+//
+//    private List<Job> jobs;
 
 }

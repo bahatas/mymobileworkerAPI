@@ -34,7 +34,6 @@ public class Job extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
     @JoinColumn(name = "client_id")
-    @JsonBackReference
     private Client client;
 
     @Column(name = "location")
@@ -52,6 +51,5 @@ public class Job extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
     @JoinColumn(name = "driver_rider_id")
-    @JsonBackReference
     private DriverRider driverRider;
 }

@@ -14,16 +14,16 @@ import java.time.LocalTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties("client")
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer"},ignoreUnknown = true)
 public class JobDto {
 
 
     @JsonProperty(required = true)
     private Long id;
     private String jobReference;
-    @JsonProperty(value = "client_id")
+    @JsonProperty(value = "client")
     @JsonIdentityReference(alwaysAsId = true)
-    @JsonBackReference
+//    @JsonBackReference
     private ClientDto clientId;
     private String location;
     private String description;
@@ -31,7 +31,7 @@ public class JobDto {
     private LocalTime deliveryTime;
     private Status status;
 
-    @JsonProperty(value = "driverRider_id")
+    @JsonProperty(value = "driverRider")
     @JsonIdentityReference(alwaysAsId = true)
 //    @JsonBackReference
     private DriverRiderDto driverRider;
