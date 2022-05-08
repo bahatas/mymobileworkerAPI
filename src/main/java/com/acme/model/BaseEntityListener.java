@@ -13,13 +13,13 @@ public class BaseEntityListener extends AuditingEntityListener {
 
     @PrePersist
     public void onPrePersist(BaseEntity baseEntity) {
-        baseEntity.setCreated(LocalDateTime.now());
-        baseEntity.setUpdated(LocalDateTime.now());
+        baseEntity.setCreatedAt(LocalDateTime.now());
+        baseEntity.setUpdatedAt(LocalDateTime.now());
     }
 
     @PreUpdate
     public void onPreUpdate(BaseEntity baseEntity) {
-        baseEntity.setUpdated(LocalDateTime.now());
+        baseEntity.setUpdatedAt(LocalDateTime.now());
     }
 
 

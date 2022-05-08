@@ -21,11 +21,11 @@ public class BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, updatable = false,name = "created")
-    private LocalDateTime created;
+    @Column(nullable = false, updatable = false,name = "created_at")
+    private LocalDateTime createdAt;
 
-    @Column(nullable = false, updatable = true,name = "updated")
-    private LocalDateTime updated;
+    @Column(nullable = false, updatable = true,name = "updated_at")
+    private LocalDateTime updatedAt;
 
     private Boolean isDeleted = false;
 

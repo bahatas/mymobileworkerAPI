@@ -1,17 +1,22 @@
 package com.acme.service;
 
+import com.acme.enums.Status;
 import com.acme.model.JobDto;
 import com.acme.model.entity.Job;
 import com.acme.repository.JobRepository;
 import com.acme.util.MapperUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
+@Transactional
 public class JobServiceImpl implements JobService {
 
     private JobRepository jobRepository;
@@ -39,7 +44,9 @@ public class JobServiceImpl implements JobService {
     @Override
     public JobDto save(JobDto jobDto) {
         Job convert = mapperUtil.convert(jobDto, new Job());
+        convert.setStatus(Status.NEW);
         Job save = jobRepository.save(convert);
+        log.info("Job with reference "+save.getJobReference()+ "created");
         return mapperUtil.convert(save,new JobDto());
 
     }

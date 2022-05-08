@@ -1,5 +1,9 @@
 package com.acme.enums;
 
+import lombok.Getter;
+import lombok.Value;
+
+@Getter
 public enum Status {
 
     NEW("New"),
