@@ -1,12 +1,12 @@
 package com.acme.service;
 
 import com.acme.enums.Status;
-import com.acme.model.JobDto;
+import com.acme.exception.AcmeException;
+import com.acme.model.dto.JobDto;
 import com.acme.model.entity.Job;
 import com.acme.repository.JobRepository;
 import com.acme.util.MapperUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,9 +36,13 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public JobDto getJobById(Long id) {
-        Optional<Job> byId = jobRepository.findById(id);
-        return mapperUtil.convert(byId,new JobDto());
+    public JobDto getJobById(Long id) throws AcmeException {
+
+        Job job = jobRepository.findById(id).get();
+        if (job == null) {
+            throw new AcmeException("There is no defined jow with this id "+id);
+        }
+        return mapperUtil.convert(job,new JobDto());
     }
 
     @Override

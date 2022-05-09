@@ -1,6 +1,6 @@
 package com.acme.service;
 
-import com.acme.model.ClientDto;
+import com.acme.model.dto.ClientDto;
 import com.acme.model.entity.Client;
 import com.acme.repository.ClientRepository;
 import com.acme.util.MapperUtil;
@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class ClientService {
