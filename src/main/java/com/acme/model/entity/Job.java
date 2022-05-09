@@ -13,7 +13,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Entity
@@ -28,7 +30,7 @@ public class Job extends BaseEntity {
 
 
 
-    @Column(name = "job_referenceo")
+    @Column(name = "job_reference")
     private String jobReference;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -44,12 +46,12 @@ public class Job extends BaseEntity {
     @Column(name = "deliveryDate")
     @JsonFormat(pattern="yyyy-MM-dd")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private LocalDateTime deliveryDate;
+    private LocalDate deliveryDate;
 
     @Column(name = "deliveryTime")
     @JsonFormat(pattern="HH:mm:ss")
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    private LocalDateTime deliveryTime;
+    private LocalTime deliveryTime;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)

@@ -2,7 +2,7 @@ package com.acme.model.entity;
 
 import com.acme.model.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +10,6 @@ import lombok.Setter;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -22,10 +21,11 @@ import java.util.List;
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer"},ignoreUnknown = true)
 public class Client extends BaseEntity {
 
-    private Long id;
+
     private String firstName;
     private String lastName;
     private String phoneNumber;
+    private String email;
 
 //    @OneToMany(mappedBy = "client",
 //            cascade = {CascadeType.ALL},

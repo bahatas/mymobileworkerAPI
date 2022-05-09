@@ -13,13 +13,15 @@ import java.util.stream.Collectors;
 @Service
 public class ClientService {
 
-    @Autowired
-    ClientRepository clientRepository;
+    private ClientRepository clientRepository;
+    private MapperUtil mapperUtil;
 
-    @Autowired
-    MapperUtil mapperUtil;
+    public ClientService(ClientRepository clientRepository, MapperUtil mapperUtil) {
+        this.clientRepository = clientRepository;
+        this.mapperUtil = mapperUtil;
+    }
 
-    public List<ClientDto> getAll(){
+    public List<ClientDto> getAll() {
 
         List<Client> all = clientRepository.findAll();
         return all.stream().map(e -> mapperUtil.convert(e, new ClientDto())).collect(Collectors.toList());
