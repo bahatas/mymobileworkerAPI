@@ -7,7 +7,7 @@ import lombok.Value;
 public enum Status {
 
     NEW("New"),
-    DONE("Done"),
+    COMPLETED("Completed"),
     CANCELED("Canceled");
 
     private String value;
