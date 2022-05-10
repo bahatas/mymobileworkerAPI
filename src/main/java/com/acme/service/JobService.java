@@ -12,6 +12,6 @@ public interface JobService {
     JobDto getJobById(Long id) throws AcmeException;
     JobDto save(JobDto jobDto) throws AcmeException;
     void delete(Long id);
-    JobDto update(Long id,JobDto jobDto);
+    JobDto update(JobDto jobDto) throws AcmeException;
 
 }
