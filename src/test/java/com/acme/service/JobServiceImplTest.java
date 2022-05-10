@@ -1,6 +1,8 @@
 package com.acme.service;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -28,6 +30,7 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -135,7 +138,6 @@ class JobServiceImplTest {
 //        jobDtotest.setClient(clientDto);
 //        jobDtotest.setId(123L);
 //
-//
 //        Client client1 = new Client();
 //        client1.setId(123L);
 //
@@ -149,8 +151,8 @@ class JobServiceImplTest {
 //        ClientRepository clientRepository = mock(ClientRepository.class);
 //        DriverRiderRepository driverRiderRepository = mock(DriverRiderRepository.class);
 //
-//        when(clientRepository.findById(123L)).thenReturn(Optional.of(client1));
-//        when(driverRiderRepository.findById((Long) any())).thenReturn(Optional.of(driverRider1));
+//        when(clientRepository.findById(anyLong())).thenReturn(Optional.of(client1));
+//        when(driverRiderRepository.findById(anyLong())).thenReturn(Optional.of(driverRider1));
 //
 //        JobRepository jobRepository = mock(JobRepository.class);
 //        when(jobRepository.save((Job) any())).thenReturn(job);
@@ -170,6 +172,57 @@ class JobServiceImplTest {
 //
 //    }
 
+
+    @Test
+    void saveDtoToEntityAndReturnJobDto() throws AcmeException {
+
+//        ClientRepository clientRepository = Mockito.mock(ClientRepository.class);
+//        DriverRiderRepository driverRiderRepository = Mockito.mock(DriverRiderRepository.class);
+
+        Client client = new Client();
+        client.setId(123L);
+        when(this.clientRepository.findById(anyLong())).thenReturn(Optional.of(client));
+
+        DriverRider driverRider = new DriverRider();
+        driverRider.setId(123L);
+
+        when((this.driverRiderRepository.findById(anyLong()))).thenReturn(Optional.of(driverRider));
+
+        Job job = new Job();
+        job.setId(123L);
+        job.setClient(client);
+        job.setDriverRider(driverRider);
+
+        ClientDto clientDto = new ClientDto();
+        clientDto.setId(123L);
+        DriverRiderDto driverRiderDto = new DriverRiderDto();
+        driverRiderDto.setId(123L);
+
+        JobDto jobDto = new JobDto();
+        jobDto.setId(123L);
+        jobDto.setClient(clientDto);
+        jobDto.setDriverRider(driverRiderDto);
+
+
+        when(this.mapperUtil.convert(jobDto, new Job())).thenReturn(job);
+        when(this.mapperUtil.convert(any(), any())).thenReturn(jobDto);
+        when(this.jobRepository.save(any())).thenReturn(job);
+
+        when(this.jobServiceImpl.save(jobDto)).thenReturn(jobDto);
+        verify(this.clientRepository).findById((Long) any());
+        when(this.mapperUtil.convert(any(), any())).thenReturn(jobDto);
+
+    }
+
+    @Test
+    void testSave() throws AcmeException {
+        when(this.clientRepository.findById((Long) any())).thenReturn(Optional.empty());
+
+        JobDto jobDto = new JobDto();
+        jobDto.setClient(new ClientDto());
+        assertThrows(AcmeException.class, () -> this.jobServiceImpl.save(jobDto));
+        verify(this.clientRepository).findById((Long) any());
+    }
 
     @Test
     void testDelete() {
@@ -195,7 +248,6 @@ class JobServiceImplTest {
         verify(this.jobRepository).save((Job) any());
 
     }
-
 
 
 //    @Test

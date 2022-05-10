@@ -56,10 +56,9 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public JobDto save(JobDto jobDto) throws AcmeException {
-        System.out.println("jobDto.toString() = " + jobDto.toString());
+
         Client client = clientRepository.findById(jobDto.getClient().getId()).orElseThrow(()->new AcmeException("Invalid Client Id"));
         DriverRider driverRider = driverRiderRepository.findById(jobDto.getDriverRider().getId()).orElseThrow(()->new AcmeException("Invalid Driver/Rider Id"));
-        log.info("save method called");
         Job convert = mapperUtil.convert(jobDto, new Job());
         convert.setStatus(Status.NEW);
         convert.setClient(client);

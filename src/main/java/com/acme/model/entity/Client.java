@@ -1,6 +1,5 @@
 package com.acme.model.entity;
 
-import com.acme.model.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -27,12 +26,5 @@ public class Client extends BaseEntity {
     private String phoneNumber;
     private String email;
 
-//    @OneToMany(mappedBy = "client",
-//            cascade = {CascadeType.ALL},
-//            orphanRemoval = true,
-//            fetch = FetchType.LAZY
-//    )
-//
-//    private List<Job> jobs;
 
 }

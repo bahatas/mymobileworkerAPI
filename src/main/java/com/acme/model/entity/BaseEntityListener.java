@@ -1,4 +1,4 @@
-package com.acme.model;
+package com.acme.model.entity;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.stereotype.Component;
