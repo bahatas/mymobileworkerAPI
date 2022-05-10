@@ -5,6 +5,7 @@ import com.acme.exception.AcmeException;
 import com.acme.model.dto.JobDto;
 import com.acme.model.ResultEnvelope;
 import com.acme.service.JobService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,12 +23,14 @@ public class JobController {
     }
 
     @PostMapping("/create")
-    public ResultEnvelope<JobDto> cerateJob(@RequestBody JobDto jobDto){
+    @Operation(summary = "Create jobs")
+    public ResultEnvelope<JobDto> cerateJob(@RequestBody JobDto jobDto) throws AcmeException {
         JobDto saved = jobService.save(jobDto);
         return ResultEnvelope.ok(saved);
     }
 
     @GetMapping("/list")
+    @Operation(summary = "Read all jobs")
     public ResultEnvelope<List<JobDto>> getJobsList(){
 
         List<JobDto> allJobsList = jobService.getAllJobsList();
