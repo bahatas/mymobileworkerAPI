@@ -125,52 +125,7 @@ class JobServiceImplTest {
         assertEquals(jobItemList, this.jobServiceImpl.getAllJobsList());
     }
 
-//    @Test
-//    void testSave() throws AcmeException {
-//        DriverRiderDto driverRiderDto = new DriverRiderDto();
-//        driverRiderDto.setId(123L);
-//
-//        ClientDto clientDto = new ClientDto();
-//        clientDto.setId(123L);
-//
-//        JobDto jobDtotest = new JobDto();
-//        jobDtotest.setDriverRider(driverRiderDto);
-//        jobDtotest.setClient(clientDto);
-//        jobDtotest.setId(123L);
-//
-//        Client client1 = new Client();
-//        client1.setId(123L);
-//
-//        DriverRider driverRider1 = new DriverRider();
-//        driverRider1.setId(123L);
-//
-//        Job job = new Job();
-//        job.setId(123L);
-//        job.setDriverRider(driverRider1);
-//        job.setClient(client1);
-//        ClientRepository clientRepository = mock(ClientRepository.class);
-//        DriverRiderRepository driverRiderRepository = mock(DriverRiderRepository.class);
-//
-//        when(clientRepository.findById(anyLong())).thenReturn(Optional.of(client1));
-//        when(driverRiderRepository.findById(anyLong())).thenReturn(Optional.of(driverRider1));
-//
-//        JobRepository jobRepository = mock(JobRepository.class);
-//        when(jobRepository.save((Job) any())).thenReturn(job);
-//
-//        JobDto actualSaveResult = jobServiceImpl.save(jobDtotest);
-//
-//        assertEquals(
-//                "JobDto(id=123, , client=ClientDto(id=123), driverRider"
-//                        + "=DriverRiderDto(id=123), jobItems=[])",
-//                actualSaveResult.toString());
-//        assertEquals(Status.NEW, actualSaveResult.getStatus());
-//        assertEquals(123L, actualSaveResult.getId().longValue());
-//
-//        verify(jobRepository).save((Job) any());
-//        verify(clientRepository).findById((Long) any());
-//        verify(driverRiderRepository).findById((Long) any());
-//
-//    }
+
 
 
     @Test
@@ -249,33 +204,6 @@ class JobServiceImplTest {
 
     }
 
-
-//    @Test
-//    void testUpdate() throws AcmeException {
-//        Client client = new Client();
-//        client.setId(123L);
-//
-//        DriverRider driverRider = new DriverRider();
-//        driverRider.setId(123L);
-//
-//        Job job = new Job();
-//        job.setClient(client);
-//        job.setDriverRider(driverRider);
-//        job.setId(123L);
-//
-//        JobRepository jobRepository = mock(JobRepository.class);
-//
-//        when(jobRepository.findById(123L)).thenReturn(Optional.of(job));
-//        when(jobRepository.save((Job) any())).thenReturn(job);
-//        JobDto jobDto = new JobDto();
-//        jobDto.setId(123L);
-//        JobDto actualUpdateResult = jobServiceImpl.update(jobDto);
-//
-//        assertEquals(123L, actualUpdateResult.getId().longValue());
-//        verify(jobRepository).findById((Long) any());
-//        verify(jobRepository).save((Job) any());
-//
-//    }
 
 }
 
