@@ -19,11 +19,9 @@ services:
       retries: 10
     volumes:
       - ./data:/docker-entrypoint-initdb.d
-  application:
-    container_name: mymobileworker-application
-    build:
-      context: ./
-      dockerfile: Dockerfile
+  mymobileworker-application:
+    build: .
+    image: bahadockerhub/mymobileworker
     ports:
       - "8000:8000"
     networks:

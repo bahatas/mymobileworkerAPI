@@ -10,10 +10,10 @@ RUN mvn package -Dmaven.test.skip
 
 FROM adoptopenjdk/openjdk11
 
-COPY --from=builder /app/target/MymobileworkerApi*.jar /MymobileworkerApi.jar
+COPY --from=builder /app/target/mymobileworkerAPI*.jar /mymobileworkerAPI.jar
 
-ENTRYPOINT ["java","-jar","MymobileworkerApi.jar"]
+ENTRYPOINT ["java","-jar","mymobileworkerAPI.jar"]
   ## Run the web service on container startup.
-CMD ["java","-Dcom.sun.net.ssl.checkRevocation=false","-Dserver.port=8000","-jar","CocoonAccountingApp.jar"]
+CMD ["java","-Dcom.sun.net.ssl.checkRevocation=false","-Dserver.port=8000","-jar","mymobileworkerAPI.jar"]
 
 ARG JAR_FILE=target/*.jar
