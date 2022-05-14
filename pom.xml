@@ -12,9 +12,16 @@
     <artifactId>mymobileworkerAPI</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>mymobileworkerAPI</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Simple Api For Delivery Jobs</description>
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>11</java.version>
+        <build.number>000</build.number>
+        <commit.hash>local-build</commit.hash>
+        <build.user>local-build</build.user>
+        <build.repo>local-build</build.repo>
+        <circle.workflow.guid>local-build</circle.workflow.guid>
     </properties>
     <dependencies>
         <dependency>
@@ -84,6 +91,28 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>3.2.1</version>
+                <configuration>
+                    <to>
+                        <image>registry.hub.docker.com/bahadockerhub/acme-api:${version}-b${build.number}</image>
+                    </to>
+                    <container>
+                        <jvmFlags>
+                            <jvmFlag>-Dbuild.number=${build.number}</jvmFlag>
+                            <jvmFlag>-Dcommit.hash=${commit.hash}</jvmFlag>
+                            <jvmFlag>-Dbuild.user=${build.user}</jvmFlag>
+                            <jvmFlag>-Dbuild.repo=${build.repo}</jvmFlag>
+                            <jvmFlag>-Dcircle.workflow.guid=${circle.workflow.guid}</jvmFlag>
+                        </jvmFlags>
+                        <ports>
+                            <port>8000</port>
+                        </ports>
+                    </container>
                 </configuration>
             </plugin>
         </plugins>
