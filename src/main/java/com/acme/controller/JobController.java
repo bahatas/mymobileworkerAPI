@@ -6,8 +6,6 @@ import com.acme.model.dto.JobDto;
 import com.acme.model.ResultEnvelope;
 import com.acme.service.JobService;
 import io.swagger.v3.oas.annotations.Operation;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,6 +36,7 @@ public class JobController {
         return ResultEnvelope.ok(allJobsList);
     }
     @GetMapping("/{jobId}")
+    @Operation(summary = "Find job by id")
     public ResultEnvelope<List<JobDto>> getJobById(@PathVariable("jobId") Long id) throws AcmeException {
 
         JobDto jobById = jobService.getJobById(id);
